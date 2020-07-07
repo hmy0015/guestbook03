@@ -2,12 +2,12 @@ package com.javaex.controller;
 
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 
 import com.javaex.dao.GuestDao;
 import com.javaex.vo.GuestVo;
@@ -15,15 +15,15 @@ import com.javaex.vo.GuestVo;
 @Controller
 @RequestMapping("/guest")
 public class GuestController {
+	@Autowired
+	private GuestDao dao;
 
 	// 리스트
 	@RequestMapping("/addList")
 	public String list(Model model){
 		System.out.println("addList");
 		
-		GuestDao dao = new GuestDao();
 		List<GuestVo> vo = dao.getBookList();
-		
 		model.addAttribute("vo", vo);
 	
 		return "addList";
@@ -34,7 +34,6 @@ public class GuestController {
 	public String add(@ModelAttribute GuestVo vo) {
 		System.out.println("add");
 		
-		GuestDao dao = new GuestDao();
 		dao.bookInsert(vo);
 		
 		return "redirect:/guest/addList";
@@ -55,7 +54,6 @@ public class GuestController {
 	public String delete(@ModelAttribute GuestVo vo) {
 		System.out.println("delete");
 		
-		GuestDao dao = new GuestDao();
 		dao.bookDelete(vo.getNo(), vo.getPw());
 
 		return "redirect:/guest/addList";
