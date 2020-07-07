@@ -8,13 +8,13 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<form action = "/gb03/guest/delete" method = "get">
+	<form action = "${pageContext.request.contextPath}/guest/delete" method = "get">
 		비밀번호
 		<input type ='hidden' name = 'no' value="${no}"> 
 		<input type ='password' name = 'pw' > 
 		<button type = 'submit'>확인</button>
 	</form>
 	<br>
-	<a href = '/gb03/guest/addList'>메인으로 돌아가기</a>
+	<a href = '${pageContext.request.contextPath}/guest/addList'>메인으로 돌아가기</a>
 </body>
 </html>

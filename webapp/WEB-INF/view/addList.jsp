@@ -10,7 +10,7 @@
 </head>
 <body>
 	
-	<form action="/gb03/guest/add?" method="get">
+	<form action="${pageContext.request.contextPath}/guest/add?" method="get">
 		<table border='1'>
 			<tbody>
 				<tr>
@@ -52,7 +52,7 @@
 					<td>${vo.no}</td>
 					<td>${vo.name}</td>
 					<td>${vo.date}</td>
-					<td><a href='/gb03/guest/deleteForm?no=${vo.no}'> 삭제 </a></td>
+					<td><a href='${pageContext.request.contextPath}/guest/deleteForm/${vo.no}'> 삭제 </a></td>
 				</tr>
 
 				<tr>

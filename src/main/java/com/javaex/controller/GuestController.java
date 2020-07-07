@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
@@ -25,7 +26,7 @@ public class GuestController {
 		
 		model.addAttribute("vo", vo);
 	
-		return "/WEB-INF/view/addList.jsp";
+		return "addList";
 	}
 	
 	// 등록
@@ -40,13 +41,13 @@ public class GuestController {
 	}
 	
 	// 삭제폼
-	@RequestMapping("/deleteForm")
-	public String deleteForm(@RequestParam("no") int no, Model model) {
+	@RequestMapping("/deleteForm/{no}")
+	public String deleteForm(@PathVariable("no") int no, Model model) {
 		System.out.println("deleteForm");
 		
 		model.addAttribute("no", no);
 		
-		return "/WEB-INF/view/deleteForm.jsp";
+		return "deleteForm";
 	}
 	
 	// 삭제
